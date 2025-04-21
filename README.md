@@ -2,7 +2,7 @@
 
 STREAM3D is a web-based point cloud renderer built with **THREE.js** and **LiveKit** for **real-time 3D streaming**. It provides a smooth and intuitive interface for visualizing a live depth stream, optionally over a `.xyz` environment model.
 
-![Hero Demo](./readMeAssets/header.png)
+![Hero Demo](./public/assets/header.png)
 
 <sub><i>Live point cloud streaming from a depth camera (Azure Kinect), rendered on STREAM3D</i></sub>
 
