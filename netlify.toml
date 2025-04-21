@@ -1,0 +1,4 @@
+[build]
+  # no build command for pure static
+  command   = ""
+  publish   = "public"
