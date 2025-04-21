@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+#pointCloudContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 4px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#streamControls {
+    margin-top: 10px;
+}
+
+#streamControls div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 80px;
+}
+
+input[type="number"] {
+    width: 70px;
+}
