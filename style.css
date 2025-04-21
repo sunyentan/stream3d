@@ -61,6 +61,39 @@ body {
     background: #005fa3;
 }
 
+#showControlsBtn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    padding: 6px 12px;
+    background: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#hideControlsBtn {
+    display: block;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 8px;
+    background: #ccc;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#showControlsBtn:hover {
+    background: #005fa3;
+}
+
+#hideControlsBtn:hover {
+    background: #bbb;
+}
+
 label {
     display: inline-block;
     width: 80px;

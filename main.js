@@ -52,6 +52,20 @@ const geometry = new THREE.BufferGeometry();
 geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
+const controlsEl    = document.getElementById("controls");
+const hideBtn       = document.getElementById("hideControlsBtn");
+const showBtn       = document.getElementById("showControlsBtn");
+
+hideBtn.addEventListener("click", () => {
+  controlsEl.style.display = "none";
+  showBtn.style.display    = "block";
+});
+
+showBtn.addEventListener("click", () => {
+  controlsEl.style.display = "block";
+  showBtn.style.display    = "none";
+});
+
 const material = new THREE.PointsMaterial({
   size: 0.0001,
   vertexColors: true,
