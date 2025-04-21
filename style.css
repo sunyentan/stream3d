@@ -29,6 +29,38 @@ body {
     margin-bottom: 10px;
 }
 
+#livekit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+#livekit-form input,
+#livekit-form button {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+#livekit-form input:focus {
+    outline: none;
+    border-color: #0078d4;
+}
+
+#livekit-form button {
+    background: #0078d4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#livekit-form button:hover {
+    background: #005fa3;
+}
+
 label {
     display: inline-block;
     width: 80px;

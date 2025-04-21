@@ -1,6 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+const urlInput     = document.getElementById("lkUrl");
+const apiKeyInput  = document.getElementById("apiKey");
+const apiSecInput  = document.getElementById("apiSecret");
+const roomInput    = document.getElementById("roomName");
+const idInput      = document.getElementById("identity");
+const connectBtn   = document.getElementById("lkConnect");
+
 const FRAME_WIDTH = 1280, FRAME_HEIGHT = 1296;
 const COLOR_HEIGHT = 720;  // top part for color image
 const LOBITS_Y_START = 720, LOBITS_Y_END = 1008;
@@ -191,14 +198,33 @@ function animate() {
 }
 animate();
 
-async function connectLiveKit() {
+// async function connectLiveKit() {
+//   const room = new LivekitClient.Room({ autoSubscribe: true });
+//   await room.connect(LIVEKIT_URL, TOKEN);
+//   console.log("Connected to room:", room.name);
+
+//   room.on(LivekitClient.RoomEvent.TrackSubscribed, (track, publication) => {
+//     if (track.kind === LivekitClient.Track.Kind.Video) {
+//       console.log("Video track subscribed:", publication.sid);
+//       const attachedEl = track.attach();
+//       attachedEl.style.display = "none";
+//       videoElement.srcObject = attachedEl.srcObject;
+//       videoElement.play();
+//       videoElement.addEventListener("loadeddata", () => {
+//         videoElement.requestVideoFrameCallback(processFrame);
+//       });
+//     }
+//   });
+// }
+// connectLiveKit().catch(err => console.error("LiveKit connection error:", err));
+
+async function startLiveKit(lkUrl, token) {
   const room = new LivekitClient.Room({ autoSubscribe: true });
-  await room.connect(LIVEKIT_URL, TOKEN);
+  await room.connect(lkUrl, token);
   console.log("Connected to room:", room.name);
 
   room.on(LivekitClient.RoomEvent.TrackSubscribed, (track, publication) => {
     if (track.kind === LivekitClient.Track.Kind.Video) {
-      console.log("Video track subscribed:", publication.sid);
       const attachedEl = track.attach();
       attachedEl.style.display = "none";
       videoElement.srcObject = attachedEl.srcObject;
@@ -209,7 +235,6 @@ async function connectLiveKit() {
     }
   });
 }
-connectLiveKit().catch(err => console.error("LiveKit connection error:", err));
 
 const modelUploadInput = document.getElementById("modelUpload");
 modelUploadInput.addEventListener("change", (event) => {
@@ -413,4 +438,27 @@ window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+connectBtn.addEventListener("click", async () => {
+  const LIVEKIT_URL  = urlInput.value.trim();
+  const apiKey       = apiKeyInput.value.trim();
+  const apiSecret    = apiSecInput.value.trim();
+  const roomName     = roomInput.value.trim();
+  const identity     = idInput.value.trim();
+
+  if (!LIVEKIT_URL || !apiKey || !apiSecret || !roomName || !identity) {
+    return alert("Please fill in all LiveKit fields");
+  }
+
+  // call your Netlify function to mint a token
+  const resp = await fetch("/.netlify/functions/generateToken", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ apiKey, apiSecret, roomName, identity }),
+  });
+  const { token } = await resp.json();
+
+  // now start LiveKit with the freshly‑minted token
+  startLiveKit(LIVEKIT_URL, token);
 });

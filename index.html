@@ -17,7 +17,16 @@
 </head>
 
 <body>
+
   <div id="controls">
+    <div id="livekit-form">
+      <input id="lkUrl" type="text" placeholder="wss://your.livekit.cloud" />
+      <input id="apiKey" type="text" placeholder="LiveKit API Key" />
+      <input id="apiSecret" type="text" placeholder="LiveKit API Secret" />
+      <input id="roomName" type="text" placeholder="Room Name (e.g. test_room)" />
+      <input id="identity" type="text" placeholder="Your participant name" />
+      <button id="lkConnect">Connect</button>
+    </div>
     <input type="file" id="modelUpload" accept=".xyz" />
     <p>Upload environment model (.xyz)</p>
     <div id="streamControls">
