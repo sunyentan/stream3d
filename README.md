@@ -21,8 +21,7 @@ STREAM3D is a web-based point cloud renderer built with **THREE.js** and **LiveK
 
 STREAM3D harnesses the power of **WebGL via THREE.js** to render 3D point clouds from live depth data while also supporting the loading of static `.xyz` environment scans.
 
-💡 **Use Case:** Perfect for digital twins, AR/VR applications, or real-time 3D reconstruction on the web.
-
+💡 **Access deployed project [here](https://stream3d.netlify.app/)** 
 ---
 
 ## 🚀 Features
@@ -39,69 +38,19 @@ STREAM3D harnesses the power of **WebGL via THREE.js** to render 3D point clouds
 - 🧭 **Navigation Options**  
   Use OrbitControls (mouse drag) or WASD keyboard navigation.
 
-- 🛠️ **Plug-and-Play Config**  
-  Switch LiveKit servers or update credentials through `config.js`.
-
----
-
-## ⚙️ Installation
-
-Clone the repo and set up your environment:
-
-```bash
-git clone https://github.com/sunyentan/3d-web-streamer.git
-cd 3d-web-streamer
-```
-
-💻 No heavy setup needed, it works right in your browser.
+- 🔐 **On-the-Fly Credentials**  
+  Enter your LiveKit URL, API Key & Secret, and room/identity right in the control panel, no config file editing needed.
 
 ---
 
 ## 🔧 Configuration
 
-Update the credentials in your `config.js`:
+### 1. All LiveKit credentials are entered at runtime via the in-app control panel.
 
-```bash
-// config.js
-export const LIVEKIT_URL = "wss://your-server.livekit.cloud";
-export const TOKEN = "YOUR_GENERATED_TOKEN_HERE";
-```
+### 2. LiveKit URL – e.g. wss://your-server.livekit.cloud
 
-🛑 Warning: If `config.js` contains secrets, remember to add it to `.gitignore`.
+### 3. API Key & API Secret – provided by your LiveKit account
 
----
+### 4. Room Name – the name of the session/room to join
 
-## 📦 Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/sunyentan/3d-web-streamer.git
-cd 3d-web-streamer
-```
-
-### 2. Set Up Your Sender
-
-Instructions coming soon...
-
-### 3. Install Requirements
-
-For development:
-
-```bash
-npm install
-```
-
-### 4. Generate a Receiver Token
-
-Run the script located at:
-
-```bash
-public/tg-receiver.js
-```
-
-Then copy the generated token and paste it into `config.js`.
-
-### 5. Run the Project
-
-Simply open `index.html` in a supported browser like Chrome.
+### 5. Participant Name – your identity in the room
