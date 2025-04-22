@@ -28,20 +28,42 @@
       <button id="lkConnect">Connect</button>
     </div>
     <div id="intrinsics-form">
-      <h3>Camera Intrinsics</h3>
+      <div class="intrinsic-field">
+        <label for="depthFxInput">Depth fx</label>
+        <input id="depthFxInput" placeholder="504.0308" />
+      </div>
+      <div class="intrinsic-field">
+        <label for="depthFyInput">Depth fy</label>
+        <input id="depthFyInput" placeholder="504.0801" />
+      </div>
+      <div class="intrinsic-field">
+        <label for="depthCxInput">Depth cx</label>
+        <input id="depthCxInput" placeholder="323.6529" />
+      </div>
+      <div class="intrinsic-field">
+        <label for="depthCyInput">Depth cy</label>
+        <input id="depthCyInput" placeholder="315.9445" />
+      </div>
     
-      <label>Depth fx<input id="depthFxInput" placeholder="504.0308" /></label>
-      <label>Depth fy<input id="depthFyInput" placeholder="504.0801" /></label>
-      <label>Depth cx<input id="depthCxInput" placeholder="323.6529" /></label>
-      <label>Depth cy<input id="depthCyInput" placeholder="315.9445" /></label>
-    
-      <label>Color fx<input id="colorFxInput" placeholder="604.7008" /></label>
-      <label>Color fy<input id="colorFyInput" placeholder="604.5446" /></label>
-      <label>Color cx<input id="colorCxInput" placeholder="641.4414" /></label>
-      <label>Color cy<input id="colorCyInput" placeholder="365.8837" /></label>
+      <div class="intrinsic-field">
+        <label for="colorFxInput">Color fx</label>
+        <input id="colorFxInput" placeholder="604.7008" />
+      </div>
+      <div class="intrinsic-field">
+        <label for="colorFyInput">Color fy</label>
+        <input id="colorFyInput" placeholder="604.5446" />
+      </div>
+      <div class="intrinsic-field">
+        <label for="colorCxInput">Color cx</label>
+        <input id="colorCxInput" placeholder="641.4414" />
+      </div>
+      <div class="intrinsic-field">
+        <label for="colorCyInput">Color cy</label>
+        <input id="colorCyInput" placeholder="365.8837" />
+      </div>
     
       <button id="intrinsicsUpdateBtn">Update Intrinsics</button>
-    </div>
+    </div>    
     <h3>Upload environment model (.xyz)</h3>
     <input type="file" id="modelUpload" accept=".xyz" />
     <div id="streamControls">
