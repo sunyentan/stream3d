@@ -27,6 +27,21 @@
       <input id="identity" type="text" placeholder="Your participant name" />
       <button id="lkConnect">Connect</button>
     </div>
+    <div id="intrinsics-form">
+      <h3>Camera Intrinsics</h3>
+    
+      <label>Depth fx<input id="depthFxInput" placeholder="504.0308" /></label>
+      <label>Depth fy<input id="depthFyInput" placeholder="504.0801" /></label>
+      <label>Depth cx<input id="depthCxInput" placeholder="323.6529" /></label>
+      <label>Depth cy<input id="depthCyInput" placeholder="315.9445" /></label>
+    
+      <label>Color fx<input id="colorFxInput" placeholder="604.7008" /></label>
+      <label>Color fy<input id="colorFyInput" placeholder="604.5446" /></label>
+      <label>Color cx<input id="colorCxInput" placeholder="641.4414" /></label>
+      <label>Color cy<input id="colorCyInput" placeholder="365.8837" /></label>
+    
+      <button id="intrinsicsUpdateBtn">Update Intrinsics</button>
+    </div>
     <h3>Upload environment model (.xyz)</h3>
     <input type="file" id="modelUpload" accept=".xyz" />
     <div id="streamControls">

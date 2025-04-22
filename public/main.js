@@ -16,15 +16,20 @@ const UNPACKED_WIDTH = 640, UNPACKED_HEIGHT = 576;
 const depthScale = 1 / 1000;
 let frameIndex = 0;
 
-// ------------------------------------
-// CHANGE YOUR CAMERA INTRINSICS HERE!!
-// ------------------------------------
+// const depthFx = 504.0308, depthFy = 504.0801;
+// const depthCx = 323.6529, depthCy = 315.9445;
+// const colorFx = 604.7008, colorFy = 604.5446;
+// const colorCx = 641.4414, colorCy = 365.8837;
 
-// TODO: make this API-able
-const depthFx = 504.0308, depthFy = 504.0801;
-const depthCx = 323.6529, depthCy = 315.9445;
-const colorFx = 604.7008, colorFy = 604.5446;
-const colorCx = 641.4414, colorCy = 365.8837;
+let depthFx = 504.0308,
+    depthFy = 504.0801,
+    depthCx = 323.6529,
+    depthCy = 315.9445;
+
+let colorFx = 604.7008,
+    colorFy = 604.5446,
+    colorCx = 641.4414,
+    colorCy = 365.8837;
 
 let groundLevel = 0;
 let environmentPoints = null;
@@ -460,6 +465,7 @@ window.addEventListener("resize", () => {
 });
 
 connectBtn.addEventListener("click", async () => {
+  updateIntrinsics();
   const LIVEKIT_URL  = urlInput.value.trim();
   const apiKey       = apiKeyInput.value.trim();
   const apiSecret    = apiSecInput.value.trim();
@@ -470,7 +476,6 @@ connectBtn.addEventListener("click", async () => {
     return alert("Please fill in all LiveKit fields");
   }
 
-  // call your Netlify function to mint a token
   const resp = await fetch("/.netlify/functions/generateToken", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -478,6 +483,41 @@ connectBtn.addEventListener("click", async () => {
   });
   const { token } = await resp.json();
 
-  // now start LiveKit with the freshly‑minted token
   startLiveKit(LIVEKIT_URL, token);
 });
+
+function updateIntrinsics() {
+  const dFx = parseFloat(depthFxInput.value);
+  const dFy = parseFloat(depthFyInput.value);
+  const dCx = parseFloat(depthCxInput.value);
+  const dCy = parseFloat(depthCyInput.value);
+
+  const cFx = parseFloat(colorFxInput.value);
+  const cFy = parseFloat(colorFyInput.value);
+  const cCx = parseFloat(colorCxInput.value);
+  const cCy = parseFloat(colorCyInput.value);
+
+  if (!isNaN(dFx)) depthFx = dFx;
+  if (!isNaN(dFy)) depthFy = dFy;
+  if (!isNaN(dCx)) depthCx = dCx;
+  if (!isNaN(dCy)) depthCy = dCy;
+
+  if (!isNaN(cFx)) colorFx = cFx;
+  if (!isNaN(cFy)) colorFy = cFy;
+  if (!isNaN(cCx)) colorCx = cCx;
+  if (!isNaN(cCy)) colorCy = cCy;
+
+  console.log("Intrinsics updated:", { depthFx, depthFy, depthCx, depthCy, colorFx, colorFy, colorCx, colorCy });
+}
+
+const depthFxInput   = document.getElementById("depthFxInput");
+const depthFyInput   = document.getElementById("depthFyInput");
+const depthCxInput   = document.getElementById("depthCxInput");
+const depthCyInput   = document.getElementById("depthCyInput");
+const colorFxInput   = document.getElementById("colorFxInput");
+const colorFyInput   = document.getElementById("colorFyInput");
+const colorCxInput   = document.getElementById("colorCxInput");
+const colorCyInput   = document.getElementById("colorCyInput");
+const intrinsicsBtn   = document.getElementById("intrinsicsUpdateBtn");
+
+intrinsicsBtn.addEventListener("click", updateIntrinsics);

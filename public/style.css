@@ -94,6 +94,48 @@ body {
     background: #bbb;
 }
 
+#intrinsics-form {
+    margin-bottom: 16px;
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+}
+
+#intrinsics-form h3 {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+}
+
+#intrinsics-form label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+#intrinsics-form input {
+    width: 60%;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#intrinsics-form button {
+    margin-top: 8px;
+    width: 100%;
+    padding: 8px;
+    background: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#intrinsics-form button:hover {
+    background: #005fa3;
+}
+
+
 label {
     display: inline-block;
     width: 80px;
