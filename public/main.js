@@ -16,6 +16,11 @@ const UNPACKED_WIDTH = 640, UNPACKED_HEIGHT = 576;
 const depthScale = 1 / 1000;
 let frameIndex = 0;
 
+// ------------------------------------
+// CHANGE YOUR CAMERA INTRINSICS HERE!!
+// ------------------------------------
+
+// TODO: make this API-able
 const depthFx = 504.0308, depthFy = 504.0801;
 const depthCx = 323.6529, depthCy = 315.9445;
 const colorFx = 604.7008, colorFy = 604.5446;
