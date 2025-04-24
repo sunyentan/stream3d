@@ -1,3 +1,15 @@
+:root {
+    --primary: #0078d4;
+    --primary-hover: #005fa3;
+    --neutral: #ccc;
+    --neutral-hover: #bbb;
+    --bg-white: rgba(255, 255, 255, 0.9);
+    --border-radius: 4px;
+    --font-size-sm: 0.9rem;
+    --font-size-xs: 0.85rem;
+    --spacing: 8px;
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
@@ -9,69 +21,75 @@ body {
     overflow: hidden;
 }
 
-#controls {
+.controls-panel {
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-white);
     padding: 10px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     max-height: 90vh;
     overflow-y: auto;
 }
 
+.controls-panel input[type="text"],
+.controls-panel input[type="number"],
+.controls-panel input[type="file"],
+.controls-panel input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--neutral);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    box-sizing: border-box;
+}
+
+.controls-panel input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Stream controls */
 #streamControls {
     margin-top: 10px;
 }
-
 #streamControls div {
     margin-bottom: 10px;
 }
 
-#livekit-form {
+/* LiveKit form */
+.controls-panel #livekit-form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing);
     margin-bottom: 16px;
 }
-
-#livekit-form input,
-#livekit-form button {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-#livekit-form input:focus {
-    outline: none;
-    border-color: #0078d4;
-}
-
-#livekit-form button {
-    background: #0078d4;
-    color: #fff;
+.controls-panel #livekit-form button {
+    background: var(--primary);
+    color: white;
     border: none;
     cursor: pointer;
 }
-
-#livekit-form button:hover {
-    background: #005fa3;
+.controls-panel #livekit-form button:hover {
+    background: var(--primary-hover);
 }
 
+/* Toggle buttons */
 #showControlsBtn {
     position: absolute;
     top: 16px;
     left: 16px;
     z-index: 200;
     padding: 6px 12px;
-    background: #0078d4;
-    color: #fff;
+    background: var(--primary);
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
+}
+#showControlsBtn:hover {
+    background: var(--primary-hover);
 }
 
 #hideControlsBtn {
@@ -79,65 +97,49 @@ body {
     margin-bottom: 12px;
     width: 100%;
     padding: 8px;
-    background: #ccc;
+    background: var(--neutral);
     border: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
     cursor: pointer;
 }
-
-#showControlsBtn:hover {
-    background: #005fa3;
-}
-
 #hideControlsBtn:hover {
-    background: #bbb;
+    background: var(--neutral-hover);
 }
 
-#intrinsics-form {
+/* Camera intrinsics form */
+.controls-panel #intrinsics-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 8px 12px;
+    gap: 8px 12px;
     margin-bottom: 16px;
     border-top: 1px solid #ddd;
     padding-top: 12px;
 }
-
-#intrinsics-form .intrinsic-field {
+.controls-panel #intrinsics-form .intrinsic-field {
     display: flex;
     flex-direction: column;
-    font-size: 0.85rem;
+    font-size: var(--font-size-xs);
 }
-
-#intrinsics-form label {
+.controls-panel #intrinsics-form label {
     margin-bottom: 4px;
 }
-
-#intrinsics-form input {
-    padding: 4px 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#intrinsics-form button {
+.controls-panel #intrinsics-form button {
     grid-column: 1 / -1;
-    padding: 8px;
-    background: #0078d4;
-    color: #fff;
+    background: var(--primary);
+    color: white;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
-
-#intrinsics-form button:hover {
-    background: #005fa3;
+.controls-panel #intrinsics-form button:hover {
+    background: var(--primary-hover);
 }
 
+/* Misc UI */
 label {
     display: inline-block;
     width: 80px;
 }
-
 input[type="number"] {
     width: 70px;
 }
