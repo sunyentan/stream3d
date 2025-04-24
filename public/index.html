@@ -18,7 +18,11 @@
 
 <body>
   <button id="showControlsBtn" style="display:none;">Show Controls</button>
+
+  <!-- Main control panel -->
   <div id="controls">
+
+    <!-- LiveKit setup -->
     <div id="livekit-form">
       <input id="lkUrl" type="text" placeholder="wss://your.livekit.cloud" />
       <input id="apiKey" type="text" placeholder="LiveKit API Key" />
@@ -27,6 +31,8 @@
       <input id="identity" type="text" placeholder="Your participant name" />
       <button id="lkConnect">Connect</button>
     </div>
+
+    <!-- Camera intrinsics form -->
     <div id="intrinsics-form">
       <div class="intrinsic-field">
         <label for="depthFxInput">Depth fx</label>
@@ -61,11 +67,15 @@
         <label for="colorCyInput">Color cy</label>
         <input id="colorCyInput" placeholder="365.8837" />
       </div>
-    
+
       <button id="intrinsicsUpdateBtn">Update Intrinsics</button>
     </div>    
+
+    <!-- Upload .xyz environment model -->
     <h3>Upload environment model (.xyz)</h3>
     <input type="file" id="modelUpload" accept=".xyz" />
+
+    <!-- Stream positioning + scaling -->
     <div id="streamControls">
       <h3>Stream Position</h3>
       <div>
@@ -92,6 +102,7 @@
         <input type="number" id="rotationInput" step="1" value="0">
         <span id="rotVal">0</span>
       </div>
+
       <h3>Stream Scale</h3>
       <div>
         <label for="scaleSlider">Scale:</label>
@@ -100,11 +111,18 @@
         <span id="scaleVal">0.5</span>
       </div>
     </div>
+
     <button id="hideControlsBtn">Hide Controls</button>
   </div>
 
+  <!-- Render output target -->
   <div id="pointCloudContainer"></div>
+
+  <!-- Hidden video element for LiveKit stream -->
   <video id="videoElement" playsinline muted style="display: none;"></video>
+
   <script src="https://cdn.jsdelivr.net/npm/livekit-client/dist/livekit-client.umd.min.js"></script>
   <script type="module" src="main.js"></script>
 </body>
+
+</html>
