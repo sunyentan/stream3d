@@ -107,13 +107,12 @@ body {
     background: var(--neutral-hover);
 }
 
-/* Camera intrinsics form */
 .controls-panel #intrinsics-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px 12px;
     margin-bottom: 16px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #d6d6d6;
     padding-top: 12px;
 }
 .controls-panel #intrinsics-form .intrinsic-field {
